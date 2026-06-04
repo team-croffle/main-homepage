@@ -16,6 +16,7 @@
     "@nuxt/ui": "^4.8.1",
     "@tanstack/vue-query": "^5.101.0",
     "@vueuse/core": "^14.3.0",
+    "motion-v": "^2.2.1",
     "ofetch": "^1.5.1",
     "oidc-client-ts": "^3.5.0",
     "pinia": "^3.0.4",

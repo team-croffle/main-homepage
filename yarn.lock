@@ -2590,6 +2590,7 @@ __metadata:
     globals: "npm:^17.6.0"
     husky: "npm:^9.1.7"
     lint-staged: "npm:^17.0.7"
+    motion-v: "npm:^2.2.1"
     ofetch: "npm:^1.5.1"
     oidc-client-ts: "npm:^3.5.0"
     pinia: "npm:^3.0.4"
