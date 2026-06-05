@@ -1,9 +1,7 @@
 <script setup lang="ts">
-  import type { StyleValue } from 'vue';
   import { cn } from '../../utils/cn';
 
   interface ParallaxLayerProps {
-    style?: StyleValue;
     type: 'particle' | 'container' | 'background';
   }
 
@@ -20,7 +18,6 @@
         'container mx-auto px-6 text-center': type === 'container',
       })
     "
-    :style="style"
   >
     <slot></slot>
   </div>
