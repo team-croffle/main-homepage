@@ -43,7 +43,7 @@
     :initial="{ opacity: 0, y: -20 }"
     :animate="{ opacity: 1, y: 0 }"
     :transition="{ duration: 0.55, ease: 'easeOut' }"
-    class="fixed z-50 backdrop-blur-[26px] backdrop-brightness-[1.04] backdrop-saturate-[1.9]"
+    class="fixed z-50 backdrop-blur-xl backdrop-brightness-104 backdrop-saturate-190"
     :style="{
       top: marginTop,
       left: marginInline,
