@@ -3,6 +3,8 @@
 </script>
 
 <template>
-  <Header />
-  <slot />
+  <div class="min-h-screen">
+    <Header />
+    <slot />
+  </div>
 </template>

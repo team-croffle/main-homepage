@@ -15,6 +15,11 @@ export default defineConfig({
         dts: true,
         resolvers: [MotionResolver()],
       },
+      ui: {
+        colors: {
+          neutral: 'neutral',
+        },
+      },
     }),
   ],
   resolve: {
