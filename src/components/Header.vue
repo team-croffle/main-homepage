@@ -1,21 +1,26 @@
 <script setup lang="ts">
   import type { NavigationMenuItem } from '@nuxt/ui';
-  import { motion, useScroll, useSpring, useTransform } from 'motion-v';
-  import { computed, ref } from 'vue';
+  import { motion, useScroll } from 'motion-v';
+  import { computed, ref, onUnmounted } from 'vue';
   import { mainNavItem } from '../constants/navigation';
+  import { cn } from '../utils/cn';
 
   const { scrollY } = useScroll();
+  const isScrolled = ref(false);
 
-  const rawProgress = useTransform(scrollY, [0, 80], [0, 1]);
-  const progress = useSpring(rawProgress, { stiffness: 180, damping: 28, mass: 0.8 });
+  // 스크롤이 40px을 넘어가면 상태만 변경하여 렌더링 부하 최소화
+  const unsubscribe = scrollY.on('change', (latest) => {
+    if (latest > 40 && !isScrolled.value) {
+      isScrolled.value = true;
+    } else if (latest <= 40 && isScrolled.value) {
+      isScrolled.value = false;
+    }
+  });
 
-  // dock geometry (Scroll에 반응하는 동적 수치들)
-  const marginTop = useTransform(progress, [0, 1], [0, 12]);
-  const marginInline = useTransform(progress, [0, 1], [0, 20]);
-  const borderRadius = useTransform(progress, [0, 1], [0, 22]);
-  const paddingY = useTransform(progress, [0, 1], [16, 12]);
+  onUnmounted(() => {
+    unsubscribe();
+  });
 
-  // 현재 화면에 보이고 있는 Section ID를 추적할 상태 변수
   const activeSection = ref<string>('');
 
   const navItems = computed<NavigationMenuItem[][]>(() => {
@@ -43,43 +48,42 @@
     :initial="{ opacity: 0, y: -20 }"
     :animate="{ opacity: 1, y: 0 }"
     :transition="{ duration: 0.55, ease: 'easeOut' }"
-    class="fixed z-50 backdrop-blur-[26px] backdrop-brightness-[1.04] backdrop-saturate-[1.9]"
-    :style="{
-      top: marginTop,
-      left: marginInline,
-      right: marginInline,
-      borderRadius,
-      backgroundColor: 'var(--header-bg)',
-      border: 'var(--header-border)',
-      boxShadow: 'var(--header-shadow)',
-    }"
+    :class="
+      cn(
+        'fixed z-50 transition-all duration-300 ease-out will-change-[top,left,right,border-radius]',
+        'bg-header-bg border-header-border shadow-header border backdrop-blur-lg backdrop-brightness-[1.04] backdrop-saturate-[1.9]',
+        {
+          'top-3 right-5 left-5 rounded-3xl': isScrolled,
+          'top-0 right-0 left-0 rounded-none': !isScrolled,
+        },
+      )
+    "
     :ui="{
       container: 'mx-0 max-w-full',
     }"
   >
     <template #title>
       <div
-        class="pointer-events-none absolute top-0 right-0 left-0 h-px rounded-t-[inherit]"
-        :style="{ background: 'var(--header-glow)' }"
+        class="bg-header-glow pointer-events-none absolute top-0 right-0 left-0 h-px rounded-t-[inherit]"
       />
 
-      <motion.div
-        class="flex items-center justify-between px-6"
-        :style="{ paddingTop: paddingY, paddingBottom: paddingY }"
+      <div
+        :class="
+          cn('flex items-center justify-between px-6 transition-all duration-300 ease-out', {
+            'py-3': isScrolled,
+            'py-4': !isScrolled,
+          })
+        "
       >
         <div class="flex items-center gap-2">
-          <div
-            class="flex h-8 w-8 items-center justify-center rounded-lg"
-            style="background-color: var(--header-brand-bg)"
-          >
+          <div class="bg-header-brand-bg flex h-8 w-8 items-center justify-center rounded-lg">
             <img src="../assets/logo-only-x32.svg" alt="Logo" />
           </div>
-          <span class="text-xl font-bold" style="color: var(--header-brand-text)"
-            >Croffle Dev.</span
-          >
+          <span class="text-header-brand-text text-xl font-bold"> Croffle Dev. </span>
         </div>
-      </motion.div>
+      </div>
     </template>
+
     <UNavigationMenu
       :items="navItems"
       :ui="{
