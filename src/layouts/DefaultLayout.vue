@@ -3,8 +3,8 @@
 </script>
 
 <template>
-  <div class="min-h-screen">
-    <Header />
+  <Header />
+  <UMain class="min-h-screen">
     <slot />
-  </div>
+  </UMain>
 </template>
