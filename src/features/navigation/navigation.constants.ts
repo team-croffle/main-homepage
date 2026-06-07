@@ -1,8 +1,4 @@
-export interface NavItem {
-  id: string;
-  label: string;
-  to: string;
-}
+import type { NavItem } from './navigation.type';
 
 export const mainNavItem: NavItem[] = [
   {

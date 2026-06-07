@@ -2,7 +2,7 @@
   import type { NavigationMenuItem } from '@nuxt/ui';
   import { motion, useScroll, useSpring, useTransform } from 'motion-v';
   import { computed, ref } from 'vue';
-  import { mainNavItem } from '../constants/navigation';
+  import { mainNavItem } from '@/features/navigation/navigation.constants';
 
   const { scrollY } = useScroll();
 

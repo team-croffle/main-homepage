@@ -1,4 +1,4 @@
-import type { HeroParticleData } from '../types/hero';
+import type { HeroParticleData } from './hero.type';
 
 export const heroParticles: HeroParticleData[] = [
   { size: 6, x: 15, y: 20, opacity: 0.4, depth: 0.13, driftX: 9, driftY: 13, dur: 6.5 },

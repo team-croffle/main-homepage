@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import type { HeroParticleData } from '../../types/hero';
-  import { cn } from '../../utils/cn';
+  import type { HeroParticleData } from '@/features/hero/hero.type.ts';
+  import { cn } from '@/utils/cn';
   import ParallaxLayer from './ParallaxLayer.vue';
 
   interface ParticleProps {

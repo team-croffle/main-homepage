@@ -1,7 +1,7 @@
 <script setup lang="ts">
   import { ref, onMounted, onUnmounted } from 'vue';
   import Particle from './heros/Particle.vue';
-  import { heroParticles } from '../constants/hero.ts';
+  import { heroParticles } from '@/features/hero/hero.constants';
 
   const sectionRef = ref<HTMLElement | null>(null);
   const isVisible = ref(false);
