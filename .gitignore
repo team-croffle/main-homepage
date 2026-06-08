@@ -27,3 +27,6 @@ dist-ssr
 .yarn
 **/auto-imports.d.ts
 **/components.d.ts
+
+.env
+.env.*

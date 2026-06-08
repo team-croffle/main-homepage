@@ -7,9 +7,9 @@ export const mainNavItem: NavItem[] = [
     to: '#about',
   },
   {
-    id: 'blog',
-    label: 'Blog',
-    to: '#blog',
+    id: 'team',
+    label: 'team',
+    to: '#team',
   },
   {
     id: 'contact',
