@@ -8,7 +8,7 @@ export const mainNavItem: NavItem[] = [
   },
   {
     id: 'team',
-    label: 'team',
+    label: 'Team',
     to: '#team',
   },
   {

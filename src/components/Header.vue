@@ -18,23 +18,22 @@
   // 현재 화면에 보이고 있는 Section ID를 추적할 상태 변수
   const activeSection = ref<string>('');
 
-  const navItems = computed<NavigationMenuItem[][]>(() => {
-    return [
-      mainNavItem.map((item) => ({
-        label: item.label,
-        to: item.to,
-        active: activeSection.value === item.id,
-      })),
-      [
-        {
-          label: 'Github',
-          icon: 'i-lucide-github',
-          to: 'https://github.com/team-croffle',
-          target: '_blank',
-        },
-      ],
-    ];
-  });
+  const mainNavItems = computed<NavigationMenuItem[]>(() => [
+    ...mainNavItem.map((item) => ({
+      label: item.label,
+      to: item.to,
+      active: activeSection.value === item.id,
+    })),
+  ]);
+
+  const navItems: NavigationMenuItem[] = [
+    {
+      label: 'Github',
+      icon: 'i-lucide-github',
+      to: 'https://github.com/team-croffle',
+      target: '_blank',
+    },
+  ];
 </script>
 
 <template>
@@ -55,6 +54,7 @@
     }"
     :ui="{
       container: 'mx-0 max-w-full',
+      center: 'gap-4',
     }"
   >
     <template #title>
@@ -81,9 +81,41 @@
       </motion.div>
     </template>
     <UNavigationMenu
+      :items="mainNavItems"
+      :ui="{
+        root: 'hidden md:flex items-center',
+        list: 'gap-4',
+        linkLabel: 'text-base',
+      }"
+    />
+    <USeparator
+      orientation="vertical"
+      class="my-auto h-5"
+      :ui="{
+        border: 'border-s-2',
+      }"
+    />
+    <UNavigationMenu
       :items="navItems"
       :ui="{
-        root: 'hidden md:flex items-center gap-6',
+        root: 'hidden md:flex items-center',
+        list: 'gap-4',
+        linkLabel: 'text-base',
+      }"
+    />
+    <USeparator
+      orientation="vertical"
+      class="my-auto h-5"
+      :ui="{
+        border: 'border-s-2',
+      }"
+    />
+    <UNavigationMenu
+      :items="[{ label: 'Login', to: '/login' }]"
+      :ui="{
+        root: 'hidden md:flex items-center',
+        list: 'gap-4',
+        linkLabel: 'text-base text-primary',
       }"
     />
     <template #right>
