@@ -47,6 +47,10 @@
   --header-glow: linear-gradient(90deg, transparent, oklch(1 0 0 / 0.85) 50%, transparent);
   --header-brand-bg: oklch(0.785 0.104 69.8);
   --header-brand-text: oklch(0.15 0.01 69.8 / 0.7);
+
+  /* Hero */
+  --hero-second-layer: oklch(0.75 0.09 50);
+  --hero-third-layer: oklch(0.82 0.11 85);
 }
 
 .dark {
@@ -140,6 +144,10 @@
   --background-image-header-glow: var(--header-glow);
   --color-header-brand-bg: var(--header-brand-bg);
   --color-header-brand-text: var(--header-brand-text);
+
+  /* Hero */
+  --color-hero-second-layer: var(--hero-second-layer);
+  --color-hero-third-layer: var(--hero-third-layer);
 }
 
 @layer base {

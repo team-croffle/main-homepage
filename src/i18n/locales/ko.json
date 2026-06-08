@@ -1,5 +1,16 @@
 {
   "main": {
+    "hero": {
+      "tagline": "작은 개발팀의 큰 꿈",
+      "welcome": "Welcome to",
+      "title": "Croffle Dev",
+      "subtitle": "Code-Baked Sweet Innovation",
+      "description": "우리는 함께 성장하며 혁신적인 프로젝트를 만들어가는 개발 동아리입니다.",
+      "cta": {
+        "projects": "About Us",
+        "contact": "문의하기"
+      }
+    },
     "about": {
       "header": "About Us",
       "description": "Croffle Dev는 탄탄한 설계 원칙과 유연한 기술 생태계를 바탕으로, 일상의 아이디어를 견고한 서비스로 구현합니다.",

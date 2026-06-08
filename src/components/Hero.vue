@@ -2,6 +2,9 @@
   import { ref, onMounted, onUnmounted } from 'vue';
   import Particle from './heros/Particle.vue';
   import { heroParticles } from '@/features/hero/hero.constants';
+  import { useI18n } from 'vue-i18n';
+
+  const { t } = useI18n();
 
   const sectionRef = ref<HTMLElement | null>(null);
   const isVisible = ref(false);
@@ -69,39 +72,18 @@
     <div class="pointer-events-none absolute inset-0 -z-10">
       <ParallaxLayer
         type="background"
-        style="
-          width: 560px;
-          height: 560px;
-          top: 16%;
-          left: 18%;
-          background-color: oklch(0.785 0.104 69.8 / 0.2);
-          --px: 80px;
-          --py: 55px;
-        "
+        class="bg-primary/20 top-16/100 left-18/100 h-140 w-140"
+        style="--px: 80px; --py: 55px"
       ></ParallaxLayer>
       <ParallaxLayer
         type="background"
-        style="
-          width: 460px;
-          height: 460px;
-          bottom: 13%;
-          right: 16%;
-          background-color: oklch(0.75 0.09 50 / 0.16);
-          --px: -65px;
-          --py: -45px;
-        "
+        class="bg-hero-second-layer/16 right-16/100 bottom-13/100 h-115 w-115"
+        style="--px: -65px; --py: -45px"
       ></ParallaxLayer>
       <ParallaxLayer
         type="background"
-        style="
-          width: 280px;
-          height: 280px;
-          top: 52%;
-          left: 54%;
-          background-color: oklch(0.82 0.11 85 / 0.13);
-          --px: 50px;
-          --py: -50px;
-        "
+        class="bg-hero-third-layer/13 top-52/100 left-54/100 h-70 w-70"
+        style="--px: 50px; --py: -50px"
       ></ParallaxLayer>
 
       <Particle v-for="(p, i) in heroParticles" :key="i" :p="p" :idx="i" :isVisible="isVisible" />
@@ -113,63 +95,54 @@
         :class="
           isVisible ? 'translate-y-0 scale-100 opacity-100' : '-translate-y-9 scale-85 opacity-0'
         "
-        style="transition-delay: 0s"
       >
         <UIcon name="i-lucide-sparkles" class="text-primary" />
-        <span class="text-sm">작은 개발팀의 큰 꿈</span>
+        <span class="text-sm">{{ t('main.hero.tagline') }}</span>
       </div>
 
       <h1
-        class="spring-enter mb-6 text-5xl font-bold md:text-7xl"
+        class="spring-enter mb-6 text-5xl font-bold delay-60 md:text-7xl"
         :class="
           isVisible ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-12 scale-90 opacity-0'
         "
-        style="transition-delay: 60ms"
       >
-        Welcome to <br />
+        {{ t('main.hero.welcome') }} <br />
         <span
           class="bg-[linear-gradient(to_right,oklch(0.785_0.104_69.8),oklch(0.6_0.08_69.8))] bg-clip-text text-transparent"
         >
-          Croffle Dev
+          {{ t('main.hero.title') }}
         </span>
       </h1>
 
       <div
-        class="spring-enter mx-auto mb-8 flex max-w-2xl flex-col items-center gap-2"
+        class="spring-enter mx-auto mb-8 flex max-w-2xl flex-col items-center gap-2 delay-100"
         :class="isVisible ? 'translate-y-0 opacity-100' : 'translate-y-9 opacity-0'"
-        style="transition-delay: 100ms"
       >
-        <p
-          class="text-xl font-semibold tracking-wide md:text-2xl"
-          style="color: oklch(0.785 0.104 69.8)"
-        >
-          Code-Baked Sweet Innovation
+        <p class="text-primary font-tektur text-xl font-semibold tracking-wide md:text-2xl">
+          {{ t('main.hero.subtitle') }}
         </p>
-        <p class="text-foreground text-lg font-medium md:text-xl">코드로 굽는 달콤한 혁신</p>
         <p class="text-muted-foreground mt-2 text-base md:text-lg">
-          우리는 함께 성장하며 혁신적인 프로젝트를 만들어가는 개발 동아리입니다.
+          {{ t('main.hero.description') }}
         </p>
       </div>
 
       <div
-        class="spring-enter flex flex-col justify-center gap-4 sm:flex-row"
+        class="spring-enter flex flex-col justify-center gap-4 delay-180 sm:flex-row"
         :class="
           isVisible ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-8 scale-90 opacity-0'
         "
-        style="transition-delay: 180ms"
       >
         <a
           href="#projects"
-          class="rounded-lg px-8 py-3 font-medium transition-all hover:scale-105"
-          style="background-color: oklch(0.785 0.104 69.8); color: oklch(0.15 0.01 69.8)"
+          class="bg-primary text-primary-foreground h-12 rounded-lg px-8 py-3 font-medium transition-all hover:scale-105"
         >
-          프로젝트 보기
+          {{ t('main.hero.cta.projects') }}
         </a>
         <a
           href="#contact"
-          class="border-border bg-card hover:bg-accent rounded-lg border px-8 py-3 font-medium transition-colors"
+          class="border-border bg-card hover:bg-accent h-12 rounded-lg border px-8 py-3 font-medium transition-colors"
         >
-          문의하기
+          {{ t('main.hero.cta.contact') }}
         </a>
       </div>
     </ParallaxLayer>
