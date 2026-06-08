@@ -10,4 +10,5 @@
   <About />
   <Team />
   <Contact />
+  <Footer />
 </template>
