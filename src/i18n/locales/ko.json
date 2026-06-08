@@ -21,6 +21,48 @@
           "description": "새롭고 신선한 아이디어를 기획 단계에만 두지 않고, 실제 사용자가 경험할 수 있는 완성도 높은 서비스로 구현합니다."
         }
       }
+    },
+    "contact": {
+      "header": "Contact Us",
+      "description": "궁금한 점이 있으시거나 함께하고 싶으시다면 언제든 연락주세요!",
+      "email": {
+        "title": "대표 이메일"
+      },
+      "discord": {
+        "title": "디스코드(팀장)"
+      },
+      "github": {
+        "title": "깃허브(Org)"
+      },
+      "form": {
+        "name": {
+          "label": "이름",
+          "placeholder": "홍길동"
+        },
+        "email": {
+          "label": "이메일",
+          "placeholder": "{'email@example.com'}"
+        },
+        "title": {
+          "label": "제목",
+          "placeholder": "문의 제목을 입력하세요"
+        },
+        "content": {
+          "label": "메시지",
+          "placeholder": "문의 내용을 입력하세요"
+        },
+        "submit": "보내기",
+        "toast": {
+          "success": {
+            "title": "문의사항이 성공적으로 전송되었습니다!",
+            "description": "메일을 통해 빠른 시일 내에 연락드리겠습니다."
+          },
+          "error": {
+            "title": "문의사항 전송에 실패했습니다.",
+            "description": "잠시 후 다시 시도해주세요."
+          }
+        }
+      }
     }
   }
 }

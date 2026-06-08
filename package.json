@@ -13,6 +13,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@iconify-vue/ic": "^1.0.3",
     "@nuxt/ui": "^4.8.1",
     "@tanstack/vue-query": "^5.101.0",
     "@vueuse/core": "^14.3.0",
