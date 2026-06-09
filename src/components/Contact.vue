@@ -3,6 +3,7 @@
   import BaselineDiscordIcon from '@iconify-vue/ic/baseline-discord';
   import { useI18n } from 'vue-i18n';
   import { reactive } from 'vue';
+  import { useToast } from '@nuxt/ui/composables/useToast';
 
   const { t } = useI18n();
   const toast = useToast();
