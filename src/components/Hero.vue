@@ -137,20 +137,22 @@
           isVisible ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-8 scale-90 opacity-0'
         "
       >
-        <a
+        <ULink
+          as="a"
           href="#about"
           :aria-label="t('main.hero.cta.about')"
           class="bg-primary text-primary-foreground h-12 rounded-lg px-8 py-3 font-medium transition-all hover:scale-105"
         >
           {{ t('main.hero.cta.about') }}
-        </a>
-        <a
+        </ULink>
+        <ULink
+          as="a"
           href="#contact"
           :aria-label="t('main.hero.cta.contact')"
-          class="border-border bg-card hover:bg-accent h-12 rounded-lg border px-8 py-3 font-medium transition-colors"
+          class="border-border text-foreground bg-card hover:bg-accent h-12 rounded-lg border px-8 py-3 font-medium transition-colors"
         >
           {{ t('main.hero.cta.contact') }}
-        </a>
+        </ULink>
       </div>
     </ParallaxLayer>
   </section>
