@@ -1,0 +1,91 @@
+{
+  "main": {
+    "hero": {
+      "tagline": "Big Dreams from a Small Dev Team",
+      "welcome": "Welcome to",
+      "title": "Croffle Dev",
+      "subtitle": "Code-Baked Sweet Innovation",
+      "description": "We are a developer community growing together, building innovative projects that turn ideas into reality.",
+      "cta": {
+        "projects": "About Us",
+        "contact": "Contact Us"
+      }
+    },
+    "about": {
+      "header": "About Us",
+      "description": "Croffle Dev transforms everyday ideas into robust services, grounded in solid design principles and an open, flexible tech ecosystem.",
+      "cards": {
+        "growth": {
+          "title": "Technical Growth",
+          "description": "We embrace technologies without being confined to specific frameworks or environments, always seeking the best solution built on solid architectural principles."
+        },
+        "collaboration": {
+          "title": "Collaboration Culture",
+          "description": "We freely propose ideas and give candid feedback — enjoying a development culture of learning together and building things the right way."
+        },
+        "experience": {
+          "title": "Real-World Experience",
+          "description": "From planning and architecture design to deployment and maintenance — we take ownership of the entire software lifecycle."
+        },
+        "idea": {
+          "title": "Creative Ideas",
+          "description": "Fresh ideas don't stop at the planning stage. We bring them to life as polished services that real users can experience."
+        }
+      }
+    },
+    "team": {
+      "header": "Our Team",
+      "description": "Meet the people behind Croffle Dev — a team growing together, one project at a time.",
+      "loading": "Loading team information...",
+      "error": "Failed to load team information."
+    },
+    "contact": {
+      "header": "Contact Us",
+      "description": "Have a question or want to join us? Feel free to reach out anytime!",
+      "email": {
+        "title": "Official Email"
+      },
+      "discord": {
+        "title": "Discord (Team Lead)"
+      },
+      "github": {
+        "title": "GitHub (Org)"
+      },
+      "form": {
+        "name": {
+          "label": "Name",
+          "placeholder": "John Doe"
+        },
+        "email": {
+          "label": "Email",
+          "placeholder": "{'email@example.com'}"
+        },
+        "title": {
+          "label": "Subject",
+          "placeholder": "Enter the subject of your inquiry"
+        },
+        "content": {
+          "label": "Message",
+          "placeholder": "Enter your message here"
+        },
+        "submit": "Send",
+        "toast": {
+          "success": {
+            "title": "Your message has been sent successfully!",
+            "description": "We'll get back to you as soon as possible via email."
+          },
+          "error": {
+            "title": "Failed to send your message.",
+            "description": "Please try again in a moment."
+          }
+        }
+      }
+    }
+  },
+  "footer": {
+    "resources": {
+      "source": "Homepage Source Code",
+      "blog": "Blog (Coming Soon)"
+    }
+  }
+}
