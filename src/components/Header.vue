@@ -54,7 +54,6 @@
     }"
     :ui="{
       container: 'mx-0 max-w-full',
-      center: 'gap-4',
     }"
   >
     <template #title>
@@ -80,49 +79,105 @@
         </div>
       </motion.div>
     </template>
-    <UNavigationMenu
-      :items="mainNavItems"
-      :ui="{
-        root: 'hidden md:flex items-center',
-        list: 'gap-4',
-        linkLabel: 'text-base',
-      }"
-    />
-    <USeparator
-      orientation="vertical"
-      class="my-auto h-5"
-      :ui="{
-        border: 'border-s-2',
-      }"
-    />
-    <UNavigationMenu
-      :items="navItems"
-      :ui="{
-        root: 'hidden md:flex items-center',
-        list: 'gap-4',
-        linkLabel: 'text-base',
-      }"
-    />
-    <USeparator
-      orientation="vertical"
-      class="my-auto h-5"
-      :ui="{
-        border: 'border-s-2',
-      }"
-    />
-    <UNavigationMenu
-      :items="[{ label: 'Login', to: '/login' }]"
-      :ui="{
-        root: 'hidden md:flex items-center',
-        list: 'gap-4',
-        linkLabel: 'text-base text-primary',
-      }"
-    />
+
+    <nav class="hidden items-center gap-4 md:flex">
+      <UNavigationMenu
+        as="div"
+        :items="mainNavItems"
+        :ui="{
+          root: 'hidden md:flex items-center',
+          list: 'gap-4',
+          linkLabel: 'text-base',
+        }"
+      />
+      <USeparator
+        orientation="vertical"
+        class="my-auto h-5"
+        :ui="{
+          border: 'border-s-2',
+        }"
+      />
+      <UNavigationMenu
+        as="div"
+        :items="navItems"
+        :ui="{
+          root: 'hidden md:flex items-center',
+          list: 'gap-4',
+          linkLabel: 'text-base',
+        }"
+      />
+      <USeparator
+        orientation="vertical"
+        class="my-auto h-5"
+        :ui="{
+          border: 'border-s-2',
+        }"
+      />
+      <UNavigationMenu
+        as="div"
+        :items="[{ label: 'Dashboard', to: 'https://dashboard.croffledev.kr' }]"
+        :ui="{
+          root: 'hidden md:flex items-center',
+          list: 'gap-4',
+          linkLabel: 'text-base text-primary',
+        }"
+      />
+    </nav>
+
     <template #right>
       <div class="flex items-center gap-2 lg:mr-8">
         <LocaleSelector class="hidden sm:flex" />
         <UColorModeButton />
       </div>
+    </template>
+
+    <template #body>
+      <nav class="flex flex-col gap-2">
+        <UNavigationMenu
+          as="div"
+          orientation="vertical"
+          :items="mainNavItems"
+          :ui="{
+            root: 'items-center',
+            list: 'gap-4',
+            linkLabel: 'text-base mx-auto',
+          }"
+        />
+        <USeparator
+          orientation="horizontal"
+          class="mx-auto w-16"
+          :ui="{
+            border: 'border-s-2 border-border',
+          }"
+        />
+        <UNavigationMenu
+          as="div"
+          orientation="vertical"
+          :items="navItems"
+          :ui="{
+            root: 'items-center',
+            list: 'gap-4',
+            linkLabel: 'text-base mx-auto',
+          }"
+        />
+        <USeparator
+          orientation="horizontal"
+          class="mx-auto w-16"
+          :ui="{
+            border: 'border-s-2 border-border',
+          }"
+        />
+        <UNavigationMenu
+          as="div"
+          orientation="vertical"
+          :items="[{ label: 'Dashboard', to: 'https://dashboard.croffledev.kr' }]"
+          :ui="{
+            root: 'items-center',
+            list: 'gap-4',
+            linkLabel: 'text-base text-primary mx-auto',
+          }"
+        />
+      </nav>
     </template>
   </UHeader>
 </template>
