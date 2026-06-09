@@ -119,7 +119,10 @@
       }"
     />
     <template #right>
-      <UColorModeButton />
+      <div class="flex items-center gap-2 lg:mr-8">
+        <LocaleSelector class="hidden sm:flex" />
+        <UColorModeButton />
+      </div>
     </template>
   </UHeader>
 </template>
