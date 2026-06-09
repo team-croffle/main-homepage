@@ -33,6 +33,12 @@
         }
       }
     },
+    "team": {
+      "header": "Our Team",
+      "description": "함께 성장하는 팀, Croffle Dev 팀원들을 소개합니다.",
+      "loading": "팀 정보를 불러오는 중입니다...",
+      "error": "팀 정보를 불러올 수 없습니다."
+    },
     "contact": {
       "header": "Contact Us",
       "description": "궁금한 점이 있으시거나 함께하고 싶으시다면 언제든 연락주세요!",

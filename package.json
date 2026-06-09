@@ -1,7 +1,7 @@
 {
   "name": "croffledev-main",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -16,13 +16,9 @@
     "@iconify-vue/ic": "^1.0.3",
     "@nuxt/ui": "^4.8.1",
     "@tanstack/vue-query": "^5.101.0",
-    "@vueuse/core": "^14.3.0",
     "clsx": "^2.1.1",
     "motion-v": "^2.2.1",
     "ofetch": "^1.5.1",
-    "oidc-client-ts": "^3.5.0",
-    "pinia": "^3.0.4",
-    "pinia-plugin-persistedstate": "^4.7.1",
     "tailwind-merge": "^3.6.0",
     "tailwindcss": "^4.3.0",
     "vue": "^3.5.34",

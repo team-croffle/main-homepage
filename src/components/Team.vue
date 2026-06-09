@@ -1,8 +1,11 @@
 <script setup lang="ts">
   import { useTeamMembers } from '@/features/team/team.hook';
   import { motion } from 'motion-v';
+  import { useI18n } from 'vue-i18n';
 
   const { members, loading } = useTeamMembers();
+  const { t } = useI18n();
+
   function getProfileImageUrl(githubUsername: string) {
     return `https://github.com/${githubUsername}.png?v=4`;
   }
@@ -21,9 +24,9 @@
         :transition="{ duration: 0.6 }"
         class="mb-16 text-center"
       >
-        <h2 class="mb-4 text-4xl font-bold">Our Team</h2>
+        <h2 class="mb-4 text-4xl font-bold">{{ t('main.team.header') }}</h2>
         <p class="text-muted-foreground mx-auto max-w-2xl text-lg">
-          함께 성장하는 Croffle Dev의 멋진 팀원들을 소개합니다.
+          {{ t('main.team.description') }}
         </p>
       </motion.div>
 
@@ -116,12 +119,12 @@
   </section>
   <section v-else-if="loading" class="h-screen">
     <div class="flex h-full w-full items-center justify-center">
-      <p class="text-xl">팀 정보를 불러오는 중입니다...</p>
+      <p class="text-xl">{{ t('main.team.loading') }}</p>
     </div>
   </section>
   <section v-else class="h-screen">
     <div class="flex h-full w-full items-center justify-center">
-      <p class="text-xl">팀 정보를 불러올 수 없습니다.</p>
+      <p class="text-xl">{{ t('main.team.error') }}</p>
     </div>
   </section>
 </template>
