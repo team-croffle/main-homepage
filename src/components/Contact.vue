@@ -55,7 +55,7 @@
 </script>
 
 <template>
-  <section id="contact" class="py-24">
+  <section id="contact" aria-labelledby="contact-heading" class="py-24">
     <div class="container mx-auto px-6">
       <motion.div
         :initial="{ opacity: 0, y: -40 }"
@@ -64,7 +64,7 @@
         :transition="{ duration: 0.6 }"
         class="mb-16 text-center"
       >
-        <h2 class="mb-4 text-4xl font-bold">{{ t('main.contact.header') }}</h2>
+        <h2 id="contact-heading" class="mb-4 text-4xl font-bold">{{ t('main.contact.header') }}</h2>
         <p class="text-muted-foreground mx-auto max-w-2xl text-lg">
           {{ t('main.contact.description') }}
         </p>
@@ -82,11 +82,15 @@
           >
             <div
               class="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+              aria-hidden="true"
             >
-              <UIcon name="i-lucide-mail" class="text-primary h-6 w-6" />
+              <UIcon name="i-lucide-mail" class="text-primary h-6 w-6" aria-hidden="true" />
             </div>
             <h3 class="mb-2 font-bold">{{ t('main.contact.email.title') }}</h3>
-            <a :href="`mailto:${contactInfo.email}`">
+            <a
+              :href="`mailto:${contactInfo.email}`"
+              :aria-label="`이메일 보내기: ${contactInfo.email}`"
+            >
               <p class="text-muted-foreground hover:text-primary transition-colors hover:underline">
                 {{ contactInfo.email }}
               </p>
@@ -103,11 +107,17 @@
           >
             <div
               class="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+              aria-hidden="true"
             >
-              <BaselineDiscordIcon class="text-primary h-6 w-6" />
+              <BaselineDiscordIcon class="text-primary h-6 w-6" aria-hidden="true" />
             </div>
             <h3 class="mb-2 font-bold">{{ t('main.contact.discord.title') }}</h3>
-            <a href="https://www.discord.com/users/391605125245960192" target="_blank">
+            <a
+              href="https://www.discord.com/users/391605125245960192"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="`Discord: ${contactInfo.discord} (새 창에서 열림)`"
+            >
               <p class="text-muted-foreground hover:text-primary transition-colors hover:underline">
                 {{ contactInfo.discord }}
               </p>
@@ -124,11 +134,17 @@
           >
             <div
               class="bg-primary/10 mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+              aria-hidden="true"
             >
-              <UIcon name="i-lucide-github" class="text-primary h-6 w-6" />
+              <UIcon name="i-lucide-github" class="text-primary h-6 w-6" aria-hidden="true" />
             </div>
             <h3 class="mb-2 font-bold">{{ t('main.contact.github.title') }}</h3>
-            <a href="https://github.com/team-croffle" target="_blank">
+            <a
+              href="https://github.com/team-croffle"
+              target="_blank"
+              rel="noopener noreferrer"
+              :aria-label="`GitHub: ${contactInfo.github} (새 창에서 열림)`"
+            >
               <p class="text-muted-foreground hover:text-primary transition-colors hover:underline">
                 {{ contactInfo.github }}
               </p>
@@ -143,7 +159,12 @@
           :transition="{ duration: 0.55, delay: 0.1, type: 'spring', stiffness: 75, damping: 13 }"
           class="bg-card border-border rounded-xl border p-8"
         >
-          <UForm class="space-y-6" :state="state" @submit="onContactSubmit">
+          <UForm
+            class="space-y-6"
+            :state="state"
+            aria-label="Contact form"
+            @submit="onContactSubmit"
+          >
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
               <UFormField
                 name="name"

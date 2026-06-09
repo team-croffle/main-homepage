@@ -15,7 +15,12 @@
 </script>
 
 <template>
-  <section v-if="!loading && members.length > 0" id="team" class="py-24">
+  <section
+    v-if="!loading && members.length > 0"
+    id="team"
+    aria-labelledby="team-heading"
+    class="py-24"
+  >
     <div class="container mx-auto px-6">
       <motion.div
         :initial="{ opacity: 0, y: -40 }"
@@ -24,13 +29,17 @@
         :transition="{ duration: 0.6 }"
         class="mb-16 text-center"
       >
-        <h2 class="mb-4 text-4xl font-bold">{{ t('main.team.header') }}</h2>
+        <h2 id="team-heading" class="mb-4 text-4xl font-bold">{{ t('main.team.header') }}</h2>
         <p class="text-muted-foreground mx-auto max-w-2xl text-lg">
           {{ t('main.team.description') }}
         </p>
       </motion.div>
 
-      <div class="grid grid-cols-1 gap-8 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
+      <div
+        class="grid grid-cols-1 gap-8 overflow-hidden md:grid-cols-2 lg:grid-cols-4"
+        role="list"
+        aria-label="Team members"
+      >
         <motion.div
           v-for="(member, index) in members"
           :key="member.name"
@@ -51,6 +60,8 @@
             damping: 13,
           }"
           :whileHover="{ y: -10 }"
+          role="listitem"
+          :aria-label="member.nickname"
           class="group"
         >
           <div
@@ -64,7 +75,7 @@
               >
                 <img
                   :src="getProfileImageUrl(member.githubUsername)"
-                  :alt="member.githubUsername"
+                  :alt="`${member.nickname} 프로필 사진`"
                   class="h-full w-full object-cover"
                 />
               </motion.div>
@@ -75,40 +86,53 @@
                 <ULink
                   as="a"
                   :href="getGithubUrl(member.githubUsername)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="`${member.nickname} GitHub`"
                   class="bg-muted hover:bg-primary/10 text-foreground rounded-lg p-2 transition-colors"
                 >
-                  <UIcon name="i-lucide-github" class="h-4 w-4" />
+                  <UIcon name="i-lucide-github" class="h-4 w-4" aria-hidden="true" />
                 </ULink>
                 <ULink
                   as="a"
                   v-if="member.linkedin"
                   :href="member.linkedin"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="`${member.nickname} LinkedIn`"
                   class="bg-muted hover:bg-primary/10 text-foreground rounded-lg p-2 transition-colors"
                 >
-                  <UIcon name="i-lucide-linkedin" class="h-4 w-4" />
+                  <UIcon name="i-lucide-linkedin" class="h-4 w-4" aria-hidden="true" />
                 </ULink>
                 <ULink
                   as="a"
                   v-if="member.blog"
                   :href="member.blog"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="`${member.nickname} 블로그`"
                   class="bg-muted hover:bg-primary/10 text-foreground rounded-lg p-2 transition-colors"
                 >
-                  <UIcon name="i-lucide-coffee" class="h-4 w-4" />
+                  <UIcon name="i-lucide-coffee" class="h-4 w-4" aria-hidden="true" />
                 </ULink>
                 <ULink
                   as="a"
                   v-if="member.homepage"
                   :href="member.homepage"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  :aria-label="`${member.nickname} 홈페이지`"
                   class="bg-muted hover:bg-primary/10 text-foreground rounded-lg p-2 transition-colors"
                 >
-                  <UIcon name="i-lucide-home" class="h-4 w-4" />
+                  <UIcon name="i-lucide-home" class="h-4 w-4" aria-hidden="true" />
                 </ULink>
                 <ULink
                   as="a"
                   :href="`mailto:${member.email}`"
+                  :aria-label="`${member.nickname}에게 이메일 보내기`"
                   class="bg-muted hover:bg-primary/10 text-foreground rounded-lg p-2 transition-colors"
                 >
-                  <UIcon name="i-lucide-mail" class="h-4 w-4" />
+                  <UIcon name="i-lucide-mail" class="h-4 w-4" aria-hidden="true" />
                 </ULink>
               </div>
             </div>
@@ -117,12 +141,18 @@
       </div>
     </div>
   </section>
-  <section v-else-if="loading" class="h-screen">
+  <section
+    v-else-if="loading"
+    class="h-screen"
+    aria-label="Loading"
+    aria-live="polite"
+    aria-busy="true"
+  >
     <div class="flex h-full w-full items-center justify-center">
       <p class="text-xl">{{ t('main.team.loading') }}</p>
     </div>
   </section>
-  <section v-else class="h-screen">
+  <section v-else class="h-screen" aria-label="Error" aria-live="assertive">
     <div class="flex h-full w-full items-center justify-center">
       <p class="text-xl">{{ t('main.team.error') }}</p>
     </div>

@@ -7,7 +7,7 @@
 </script>
 
 <template>
-  <section id="about" class="bg-buted/30 py-24">
+  <section id="about" aria-labelledby="about-heading" class="bg-buted/30 py-24">
     <div class="container mx-auto px-6">
       <motion.div
         :initial="{ opacity: 0, y: -40 }"
@@ -16,7 +16,7 @@
         :transition="{ duration: 0.6 }"
         class="mb-16 text-center"
       >
-        <h2 class="mb-4 text-4xl font-bold">
+        <h2 id="about-heading" class="mb-4 text-4xl font-bold">
           {{ t('main.about.header') }}
         </h2>
         <p class="text-muted-foreground mx-auto max-w-2xl text-lg">
@@ -24,9 +24,14 @@
         </p>
       </motion.div>
 
-      <div class="grid grid-cols-1 gap-6 overflow-hidden md:grid-cols-2 lg:grid-cols-4">
+      <div
+        class="grid grid-cols-1 gap-6 overflow-hidden md:grid-cols-2 lg:grid-cols-4"
+        role="list"
+        aria-label="Features"
+      >
         <UCard
           :as="motion.div"
+          role="listitem"
           v-for="(feature, index) in features"
           index
           :key="index"
@@ -60,8 +65,11 @@
           }"
           class="bg-card border-border hover:border-primary/50 rounded-2xl border p-2 transition-colors"
         >
-          <div class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg">
-            <UIcon :name="feature.icon" class="text-primary h-6 w-6" />
+          <div
+            class="bg-primary/10 mb-4 flex h-12 w-12 items-center justify-center rounded-lg"
+            aria-hidden="true"
+          >
+            <UIcon :name="feature.icon" class="text-primary h-6 w-6" aria-hidden="true" />
           </div>
           <h3 class="mb-2 text-xl font-bold">{{ t(feature.title) }}</h3>
           <p class="text-muted-foreground">

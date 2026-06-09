@@ -65,11 +65,12 @@
 <template>
   <section
     ref="sectionRef"
+    aria-label="Hero"
     @mousemove="onMove"
     @mouseleave="onLeave"
     class="relative flex min-h-screen items-center justify-center overflow-hidden pt-20"
   >
-    <div class="pointer-events-none absolute inset-0 -z-10">
+    <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
       <ParallaxLayer
         type="background"
         class="bg-primary/20 top-16/100 left-18/100 h-140 w-140"
@@ -91,12 +92,14 @@
 
     <ParallaxLayer type="container" style="--px: 10px; --py: 7px">
       <div
+        role="note"
+        aria-label="tagline"
         class="bg-muted spring-enter mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2"
         :class="
           isVisible ? 'translate-y-0 scale-100 opacity-100' : '-translate-y-9 scale-85 opacity-0'
         "
       >
-        <UIcon name="i-lucide-sparkles" class="text-primary" />
+        <UIcon name="i-lucide-sparkles" class="text-primary" aria-hidden="true" />
         <span class="text-sm">{{ t('main.hero.tagline') }}</span>
       </div>
 
@@ -127,19 +130,23 @@
       </div>
 
       <div
+        role="group"
+        aria-label="Call to action"
         class="spring-enter flex flex-col justify-center gap-4 delay-180 sm:flex-row"
         :class="
           isVisible ? 'translate-y-0 scale-100 opacity-100' : 'translate-y-8 scale-90 opacity-0'
         "
       >
         <a
-          href="#projects"
+          href="#about"
+          :aria-label="t('main.hero.cta.about')"
           class="bg-primary text-primary-foreground h-12 rounded-lg px-8 py-3 font-medium transition-all hover:scale-105"
         >
-          {{ t('main.hero.cta.projects') }}
+          {{ t('main.hero.cta.about') }}
         </a>
         <a
           href="#contact"
+          :aria-label="t('main.hero.cta.contact')"
           class="border-border bg-card hover:bg-accent h-12 rounded-lg border px-8 py-3 font-medium transition-colors"
         >
           {{ t('main.hero.cta.contact') }}

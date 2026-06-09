@@ -60,6 +60,7 @@
       <div
         class="pointer-events-none absolute top-0 right-0 left-0 h-px rounded-t-[inherit]"
         :style="{ background: 'var(--header-glow)' }"
+        aria-hidden="true"
       />
 
       <motion.div
@@ -70,8 +71,9 @@
           <div
             class="flex h-8 w-8 items-center justify-center rounded-lg"
             style="background-color: var(--header-brand-bg)"
+            aria-hidden="true"
           >
-            <img src="../assets/logo-only-x32.svg" alt="Logo" />
+            <img src="../assets/logo-only-x32.svg" alt="" role="presentation" />
           </div>
           <span class="text-xl font-bold" style="color: var(--header-brand-text)"
             >Croffle Dev.</span
@@ -80,7 +82,7 @@
       </motion.div>
     </template>
 
-    <nav class="hidden items-center gap-4 md:flex">
+    <nav class="hidden items-center gap-4 md:flex" aria-label="Main navigation">
       <UNavigationMenu
         as="div"
         :items="mainNavItems"
@@ -126,13 +128,13 @@
 
     <template #right>
       <div class="flex items-center gap-2 lg:mr-8">
-        <LocaleSelector class="hidden sm:flex" />
+        <LocaleSelector class="hidden sm:flex" aria-label="Language selector" />
         <UColorModeButton />
       </div>
     </template>
 
     <template #body>
-      <nav class="flex flex-col gap-2">
+      <nav class="flex flex-col gap-2" aria-label="Mobile navigation">
         <UNavigationMenu
           as="div"
           orientation="vertical"
