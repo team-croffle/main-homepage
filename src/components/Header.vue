@@ -4,6 +4,8 @@
   import { computed, ref } from 'vue';
   import { mainNavItem } from '@/features/navigation/navigation.constants';
 
+  const DASHBOARD_URL = import.meta.env.VITE_DASHBOARD_URL ?? '';
+
   const { scrollY } = useScroll();
 
   const rawProgress = useTransform(scrollY, [0, 160], [0, 1]);
@@ -117,7 +119,7 @@
       />
       <UNavigationMenu
         as="div"
-        :items="[{ label: 'Dashboard', to: 'https://dashboard.croffledev.kr' }]"
+        :items="[{ label: 'Dashboard', to: DASHBOARD_URL }]"
         :ui="{
           root: 'hidden md:flex items-center',
           list: 'gap-4',
@@ -172,7 +174,13 @@
         <UNavigationMenu
           as="div"
           orientation="vertical"
-          :items="[{ label: 'Dashboard', to: 'https://dashboard.croffledev.kr' }]"
+          :items="[
+            {
+              label: 'Dashboard',
+              to: DASHBOARD_URL,
+              class: 'cursor-pointer',
+            },
+          ]"
           :ui="{
             root: 'items-center',
             list: 'gap-4',
