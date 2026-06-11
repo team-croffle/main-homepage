@@ -7,6 +7,8 @@ import { defineConfig } from 'vite';
 
 import { cloudflare } from "@cloudflare/vite-plugin";
 
+const isTermux = process.env.TERMUX_DEV === 'true';
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [vue(), tailwindcss(), ui({
@@ -19,7 +21,9 @@ export default defineConfig({
         neutral: 'neutral',
       },
     },
-  }), cloudflare()],
+  }), 
+    ...(isTermux ? [] : [cloudflare()])
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
