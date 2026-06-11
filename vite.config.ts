@@ -5,24 +5,27 @@ import MotionResolver from 'motion-v/resolver';
 import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 
-import { cloudflare } from "@cloudflare/vite-plugin";
+import { cloudflare } from '@cloudflare/vite-plugin';
 
 const isTermux = process.env.TERMUX_DEV === 'true';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), tailwindcss(), ui({
-    components: {
-      dts: true,
-      resolvers: [MotionResolver()],
-    },
-    ui: {
-      colors: {
-        neutral: 'neutral',
+  plugins: [
+    vue(),
+    tailwindcss(),
+    ui({
+      components: {
+        dts: true,
+        resolvers: [MotionResolver()],
       },
-    },
-  }), 
-    ...(isTermux ? [] : [cloudflare()])
+      ui: {
+        colors: {
+          neutral: 'neutral',
+        },
+      },
+    }),
+    ...(isTermux ? [] : [cloudflare()]),
   ],
   resolve: {
     alias: {

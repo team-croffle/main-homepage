@@ -70,7 +70,7 @@
       </motion.div>
 
       <div class="mx-auto max-w-4xl">
-        <div class="mb-12 grid grid-cols-1 gap-8 py-4 overflow-hidden md:grid-cols-3">
+        <div class="mb-12 grid grid-cols-1 gap-8 overflow-hidden p-4 md:grid-cols-3">
           <motion.div
             :initial="{ opacity: 0, x: -80, rotate: -12, scale: 0.8 }"
             :whileInView="{ opacity: 1, x: 0, rotate: 0, scale: 1 }"

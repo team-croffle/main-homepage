@@ -25,7 +25,7 @@
       </motion.div>
 
       <div
-        class="grid grid-cols-1 gap-6 py-4 overflow-hidden md:grid-cols-2 lg:grid-cols-4"
+        class="grid grid-cols-1 gap-6 overflow-hidden p-4 md:grid-cols-2 lg:grid-cols-4"
         role="list"
         aria-label="Features"
       >
