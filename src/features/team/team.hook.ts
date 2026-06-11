@@ -1,6 +1,7 @@
 import { onMounted, ref } from 'vue';
 import type { TeamMember, TeamMemberData, TeamMemberFetchedData } from './team.type';
 import { assignScatter } from '@/utils/scatter';
+import { $fetch } from 'ofetch';
 
 export function useTeamMembers() {
   const members = ref<TeamMember[]>([]);
@@ -14,8 +15,12 @@ export function useTeamMembers() {
       url.searchParams.set('filter[status][_eq]', 'published');
       url.searchParams.set('sort', 'sort');
 
-      const resp = await fetch(url.toString());
-      const { data } = (await resp.json()) as { data: TeamMemberFetchedData[] };
+      const { data } = await $fetch<{ data: TeamMemberFetchedData[] }>(url.toString(), {
+        headers: {
+          'Cache-Control': 'no-cache',
+          Pragma: 'no-cache',
+        },
+      });
 
       const normalized: TeamMemberData[] = data.map((m) => ({
         sort: m.sort,

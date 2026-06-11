@@ -4,6 +4,7 @@
   import { useI18n } from 'vue-i18n';
   import { reactive } from 'vue';
   import { useToast } from '@nuxt/ui/composables/useToast';
+  import { $fetch } from 'ofetch';
 
   const { t } = useI18n();
   const toast = useToast();
@@ -28,15 +29,12 @@
   }
 
   async function onContactSubmit() {
-    const resp = await fetch(`${import.meta.env.VITE_CMS_URL}/items/contact_submissions`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(state),
-    });
+    try {
+      await $fetch(`${import.meta.env.VITE_CMS_URL}/items/contact_submissions`, {
+        method: 'POST',
+        body: state,
+      });
 
-    if (resp.status === 200) {
       toast.add({
         title: t('main.contact.form.toast.success.title'),
         description: t('main.contact.form.toast.success.description'),
@@ -44,7 +42,7 @@
         color: 'success',
       });
       clearState();
-    } else {
+    } catch (error) {
       toast.add({
         title: t('main.contact.form.toast.error.title'),
         description: t('main.contact.form.toast.error.description'),

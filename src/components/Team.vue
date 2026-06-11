@@ -4,6 +4,7 @@
   import { useI18n } from 'vue-i18n';
 
   const { members, loading } = useTeamMembers();
+
   const { t } = useI18n();
 
   function getProfileImageUrl(githubUsername: string) {
