@@ -16,10 +16,7 @@ export function useTeamMembers() {
       url.searchParams.set('sort', 'sort');
 
       const { data } = await $fetch<{ data: TeamMemberFetchedData[] }>(url.toString(), {
-        headers: {
-          'Cache-Control': 'no-cache',
-          Pragma: 'no-cache',
-        },
+        cache: 'no-store',
       });
 
       const normalized: TeamMemberData[] = data.map((m) => ({
