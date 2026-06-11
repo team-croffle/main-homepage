@@ -61,7 +61,7 @@
     <template #title>
       <div
         class="pointer-events-none absolute top-0 right-0 left-0 h-px rounded-t-[inherit]"
-        :style="{ background: 'var(--header-glow)' }"
+        :style="{ background: 'var(--header-glow)' /* backgroundColor 아님. */ }"
         aria-hidden="true"
       />
 
@@ -71,15 +71,12 @@
       >
         <div class="flex items-center gap-2">
           <div
-            class="flex h-8 w-8 items-center justify-center rounded-lg"
-            style="background-color: var(--header-brand-bg)"
+            class="bg-header-brand-bg flex h-8 w-8 items-center justify-center rounded-lg"
             aria-hidden="true"
           >
             <img src="../assets/logo-only-x32.svg" alt="" role="presentation" />
           </div>
-          <span class="text-xl font-bold" style="color: var(--header-brand-text)"
-            >Croffle Dev.</span
-          >
+          <span class="text-header-brand-text text-xl font-bold">{{ 'Croffle Dev.' }}</span>
         </div>
       </motion.div>
     </template>
